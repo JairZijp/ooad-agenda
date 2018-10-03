@@ -5,19 +5,12 @@
  */
 package models;
 
-import java.sql.Date;
-import java.sql.Time;
-
 /**
  *
  * @author jairz
  */
-public abstract class Appointment {
-    
-    private String name;
-    private Date date;
-    private Time time;
-    private String category;
-    
+public interface Recurring {
+     
+   
     
 }
