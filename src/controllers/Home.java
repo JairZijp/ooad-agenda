@@ -5,10 +5,18 @@
  */
 package controllers;
 
+import java.io.IOException;
+import javafx.fxml.FXML;
+
 /**
  *
  * @author Simon
  */
 public class Home {
+    
+    @FXML
+    private void NewAppointmentScreen() throws IOException {
+        Main.GoToScreen("NewAppointment.fxml");
+    }
     
 }
