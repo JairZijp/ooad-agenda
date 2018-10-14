@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Java/oaad_duplicate/JafaFXAgenda/src/controllers/Main.java</file>
-            <file>file:/E:/Java/oaad_duplicate/JafaFXAgenda/src/views/Login.fxml</file>
-            <file>file:/E:/Java/oaad_duplicate/JafaFXAgenda/src/controllers/Login.java</file>
-            <file>file:/E:/Java/oaad_duplicate/JafaFXAgenda/src/models/Reminder.java</file>
+            <file>file:/E:/Java/ooad-agenda/src/controllers/Home.java</file>
+            <file>file:/E:/Java/ooad-agenda/src/views/Login.fxml</file>
+            <file>file:/E:/Java/ooad-agenda/src/controllers/Login.java</file>
+            <file>file:/E:/Java/ooad-agenda/src/views/Home.fxml</file>
         </group>
     </open-files>
 </project-private>
