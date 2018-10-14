@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import java.io.IOException;
 
 /**
  *
@@ -76,4 +77,9 @@ public class Home implements Initializable {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
     }
+    @FXML
+    private void NewAppointmentScreen() throws IOException {
+        Main.GoToScreen("NewAppointment.fxml");
+    }
+    
 }
