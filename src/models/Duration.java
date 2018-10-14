@@ -14,6 +14,6 @@ import java.sql.Time;
  */
 public interface Duration {
       
-    
+    abstract void hasDuration();
     
 }
