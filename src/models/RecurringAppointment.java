@@ -5,8 +5,8 @@
  */
 package models;
 
-import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 
 /**
  *
@@ -16,18 +16,20 @@ public class RecurringAppointment extends Appointment implements Recurring {
     
     private String location;
     private String description;
-    private Date endDate;
+    private LocalDate endDate;
     private Time endTime;
-    private Date startDate;
+    private LocalDate startDate;
     private Time startTime;
     private String frequency;
     private int timesTotal;
 
-    public RecurringAppointment(String location, String description) {
-        this.location = location;
-        this.description = description;
+    public RecurringAppointment(String name, LocalDate date, String time, String category) {
+        super(name, date, time, category);
     }
-    
+
+    public void isRecurring() {
+        // do something
+    }
 
     public String getLocation() {
         return location;

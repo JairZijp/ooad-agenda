@@ -5,6 +5,10 @@
  */
 package models;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+
 /**
  *
  * @author jairz
@@ -12,5 +16,9 @@ package models;
 public class Reminder extends Appointment {
     
     private int reminderMinutesBefore;
+
+    public Reminder(String name, LocalDate date, String time, String category) {
+        super(name, date, time, category);
+    }
     
 }
