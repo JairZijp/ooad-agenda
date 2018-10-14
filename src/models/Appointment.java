@@ -7,6 +7,7 @@ package models;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 
 /**
  *
@@ -14,12 +15,12 @@ import java.sql.Time;
  */
 public abstract class Appointment {
     
-    private String name;
-    private Date date;
-    private Time time;
-    private String category;
+    public String name;
+    public LocalDate date;
+    public String time;
+    public String category;
 
-    public Appointment(String name, Date date, Time time, String category) {
+    public Appointment(String name, LocalDate date, String time, String category) {
         this.name = name;
         this.date = date;
         this.time = time;
@@ -50,19 +51,19 @@ public abstract class Appointment {
         this.name = name;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

@@ -11,6 +11,6 @@ package models;
  */
 public interface Recurring {
      
-   
+    abstract void isRecurring();
     
 }
