@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
@@ -53,7 +54,8 @@ public class Appointment implements Initializable {
         
     }
     
-    public void addSingleAppointment() throws SQLException {
+    @FXML
+    public void addSingleAppointment(ActionEvent event) throws SQLException {
         
         String name = nameField.textProperty().get(),
                 description = descriptionField.textProperty().get(),
