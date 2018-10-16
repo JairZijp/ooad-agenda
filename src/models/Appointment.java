@@ -16,10 +16,10 @@ import java.time.LocalDate;
 public abstract class Appointment {
     
     public String name;
-    public LocalDate date;
+    public String date;
     public String time;
 
-    public Appointment(String name, LocalDate date, String time) {
+    public Appointment(String name, String date, String time) {
         this.name = name;
         this.date = date;
         this.time = time;
@@ -49,11 +49,11 @@ public abstract class Appointment {
         this.name = name;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
