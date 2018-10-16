@@ -1,26 +1,19 @@
 package models;
 
-import java.sql.Date;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.time.LocalDate;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import models.Appointment;
 import models.DB;
 import models.Duration;
-import models.User;
 
 public class SingleAppointment extends Appointment implements Duration {
     
     private String location;
-    private LocalDate endDate;
+    private String endDate;
     private String endTime;
     private String description;
-    private LocalDate startDate;
+    private String startDate;
 
-    public SingleAppointment(String location, LocalDate endDate, String endTime, String description, LocalDate startDate, String name, LocalDate date, String time) {
+    public SingleAppointment(String location, String endDate, String endTime, String description, String startDate, String name, String date, String time) {
         super(name, date, time);
         this.location = location;
         this.endDate = endDate;
@@ -37,16 +30,16 @@ public class SingleAppointment extends Appointment implements Duration {
         
     }
     
-    public void addAppointment() throws SQLException {
+    public void addSingleAppointment() throws SQLException {
         
          //create connection and execute query
         DB Connection = new DB();
              
-        String query = String.format(""
-                                        + "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); "
+        String query = String.format(
+                                          "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); " 
                                         + "SET @id_val = (SELECT LAST_INSERT_ID()); "
                                         + "INSERT INTO single_appointment(appointment_id, location, end_date, end_time, description, start_date, start_time) "
-                                        + "VALUES(@id_val, '%s', '%s', '%s', '%s', '%s', '%s'); "
+                                        + "VALUES(@id_val, '%s', '%s', '%s', '%s', '%s', '%s') "    
                                     , name, date, time, location, endDate, endTime, description, startDate, time);
 
         //execute query and close connection
@@ -63,11 +56,11 @@ public class SingleAppointment extends Appointment implements Duration {
         this.location = location;
     }
 
-    public LocalDate getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
