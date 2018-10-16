@@ -41,29 +41,16 @@ public class SingleAppointment extends Appointment implements Duration {
         
          //create connection and execute query
         DB Connection = new DB();
-        
-        System.out.println("Test");
-        
+             
         String query = String.format(""
-                + "DECLARE @AppointmentId int "
-                + "INSERT INTO single_appointment(name, date, time VALUES('%s', '%s', '%s') "
-                + "SET @AppointmentId = SCOPE_IDENTITY() "
-                + "INSERT INTO single_appointment(appointmentId, location, endDate, endTime, description, startDate, startTime) "
-                + "                 VALUES(@AppointmentId,'%s', '%s', '%s', '%s', '%s', '%s')"
-                + "", name, date, time, location, endDate, endTime, description, startDate, time);
-        
-        String query2 = String.format("" +
-                                        " " +
-                                            " "
-                                            + "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); "
-                                            + " "
-                                            + "INSERT INTO single_appointment(appointment_id,location,end_date,end_time,description,start_date,start_time) "
-                                            + "VALUES(SCOPE_IDENTITY(),'%s', '%s', '%s', '%s', '%s', '%s');" +
-                                        "  " +
-                                        "", name, date, time, location, endDate, endTime, description, startDate, time);
+                                        + "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); "
+                                        + "SET @id_val = (SELECT LAST_INSERT_ID()); "
+                                        + "INSERT INTO single_appointment(appointment_id, location, end_date, end_time, description, start_date, start_time) "
+                                        + "VALUES(@id_val, '%s', '%s', '%s', '%s', '%s', '%s'); "
+                                    , name, date, time, location, endDate, endTime, description, startDate, time);
 
         //execute query and close connection
-        Connection.executeUpdateQuery(query2);
+        Connection.executeUpdateQuery(query);
         Connection.close();
         
     }
