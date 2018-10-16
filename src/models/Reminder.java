@@ -6,6 +6,7 @@
 package models;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 
@@ -16,9 +17,46 @@ import java.time.LocalDate;
 public class Reminder extends Appointment {
     
     private int reminderMinutesBefore;
+    private String category;
 
-    public Reminder(String name, LocalDate date, String time) {
+    /**
+     *
+     * @param name
+     * @param date
+     * @param time
+     * @param reminderMinutesBefore
+     * @param category
+     */
+    public Reminder(String name, String date, String time, int reminderMinutesBefore, String category) {
         super(name, date, time);
+        this.reminderMinutesBefore = reminderMinutesBefore;
+        this.category = category;
+    }
+    
+    public void getReminders() {
+        
+    }
+    
+    /**
+     *
+     * @throws SQLException
+     */
+    public void addReminder() throws SQLException {
+        
+        DB Connection = new DB();
+        
+        String query = String.format(
+                "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); " +
+                "SET @id_val = (SELECT LAST_INSERT_ID()); " +
+                "INSERT INTO reminder(appointment_id, reminder_minutes_before, category) " +
+                "VALUES(@id_val, '%s', '%s')"
+                
+        , name, date, time, reminderMinutesBefore, category);
+        
+        //execute query and close connection
+        Connection.executeUpdateQuery(query);
+        Connection.close();
+        
     }
     
     
