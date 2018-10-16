@@ -41,15 +41,16 @@ public class SingleAppointment extends Appointment implements Duration {
         
          //create connection and execute query
         DB Connection = new DB();
+             
+        String query = String.format(""
+                                        + "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); "
+                                        + "SET @id_val = (SELECT LAST_INSERT_ID()); "
+                                        + "INSERT INTO single_appointment(appointment_id, location, end_date, end_time, description, start_date, start_time) "
+                                        + "VALUES(@id_val, '%s', '%s', '%s', '%s', '%s', '%s'); "
+                                    , name, date, time, location, endDate, endTime, description, startDate, time);
 
-        //this query will only select 1 row if the data is correct
-        String sql = String.format("INSERT INTO single_appointment(name, date, time, category, location, endDate, endTime, description, startDate, startTime)"
-                + "                 VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-                                    name, date, time, category, location, endDate, endTime, description, startDate, time
-                );
-        
         //execute query and close connection
-        Connection.executeUpdateQuery(sql);
+        Connection.executeUpdateQuery(query);
         Connection.close();
         
     }
