@@ -23,8 +23,8 @@ public class RecurringAppointment extends Appointment implements Recurring {
     private String frequency;
     private int timesTotal;
 
-    public RecurringAppointment(String name, LocalDate date, String time, String category) {
-        super(name, date, time, category);
+    public RecurringAppointment(String name, LocalDate date, String time) {
+        super(name, date, time);
     }
 
     public void isRecurring() {
