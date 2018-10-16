@@ -17,8 +17,10 @@ public class Reminder extends Appointment {
     
     private int reminderMinutesBefore;
 
-    public Reminder(String name, LocalDate date, String time, String category) {
-        super(name, date, time, category);
+    public Reminder(String name, LocalDate date, String time) {
+        super(name, date, time);
     }
+    
+    
     
 }
