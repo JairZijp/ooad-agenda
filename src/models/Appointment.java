@@ -18,22 +18,20 @@ public abstract class Appointment {
     public String name;
     public LocalDate date;
     public String time;
-    public String category;
 
-    public Appointment(String name, LocalDate date, String time, String category) {
+    public Appointment(String name, LocalDate date, String time) {
         this.name = name;
         this.date = date;
         this.time = time;
-        this.category = category;
     }
     
     public void setAppointment() {
         
          //Make Connection
         DB Connection = new DB();
-        String sql = String.format("INSERT INTO appointment (name, date, time, category)" +
-                        "VALUES ('%s', '%s', '%s', '%s')",
-                this.name, this.date, this.time, this.category);
+        String sql = String.format("INSERT INTO appointment (name, date, time)" +
+                        "VALUES ('%s', '%s', '%s')",
+                this.name, this.date, this.time);
 
         //execute query and close connection
         Connection.executeUpdateQuery(sql);
@@ -67,15 +65,5 @@ public abstract class Appointment {
         this.time = time;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    
-   
-    
     
 }

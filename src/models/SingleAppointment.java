@@ -20,8 +20,8 @@ public class SingleAppointment extends Appointment implements Duration {
     private String description;
     private LocalDate startDate;
 
-    public SingleAppointment(String location, LocalDate endDate, String endTime, String description, LocalDate startDate, String name, LocalDate date, String time, String category) {
-        super(name, date, time, category);
+    public SingleAppointment(String location, LocalDate endDate, String endTime, String description, LocalDate startDate, String name, LocalDate date, String time) {
+        super(name, date, time);
         this.location = location;
         this.endDate = endDate;
         this.endTime = endTime;

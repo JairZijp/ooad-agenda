@@ -67,7 +67,7 @@ public class Appointment implements Initializable {
         LocalDate startDate = startDateField.getValue(),
                 endDate = endDateField.getValue();
         
-        SingleAppointment a = new SingleAppointment(location, endDate, endTime, description, startDate, name, endDate, time, category);
+        SingleAppointment a = new SingleAppointment(location, endDate, endTime, description, startDate, name, endDate, time);
         
         a.addAppointment();
        
