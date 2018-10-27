@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
@@ -50,8 +51,7 @@ public class Appointment implements Initializable {
     
     /* Recurring */
     @FXML
-    private TextField frequencyField;
-    
+    private TextField frequencyField; 
     @FXML
     private TextField timesTotalField;
     
@@ -101,7 +101,7 @@ public class Appointment implements Initializable {
       
         String name = nameField.textProperty().get(),
             time = startTimeField.textProperty().get(),
-            date = endTimeField.textProperty().get(),
+            date = startDateField.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
             category = categoryField.textProperty().get();
         
         int minutesBefore = Integer.parseInt(reminderMinutesBefore.textProperty().get());
@@ -131,6 +131,21 @@ public class Appointment implements Initializable {
         
         r.addRecurringAppointment();
         
+    }
+    
+    @FXML
+    private void NewAppointmentScreen() throws IOException {
+        Main.GoToScreen("NewAppointment.fxml");
+    }
+    
+    @FXML
+    private void NewReminderScreen() throws IOException {
+        Main.GoToScreen("NewReminder.fxml");
+    }
+    
+    @FXML
+    private void NewRecurringScreen() throws IOException {
+        Main.GoToScreen("NewRecurring.fxml");
     }
     
 }
