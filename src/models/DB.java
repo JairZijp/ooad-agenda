@@ -21,7 +21,7 @@ public class DB {
 
     private final static String DB_DRIVER_URL = "com.mysql.jdbc.Driver";
     private final static String DB_DRIVER_PREFIX = "jdbc:mysql://";
-    private final static String DB_DRIVER_PARAMETERS = "?useSSL=true";
+    private final static String DB_DRIVER_PARAMETERS = "?useSSL=true&allowMultiQueries=true";
 
 
     private Connection connection = null;
