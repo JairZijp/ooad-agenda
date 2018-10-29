@@ -1,26 +1,89 @@
-package main.java.models;
+package models;
 
-import java.sql.Date;
+import controllers.Main;
+import java.sql.SQLException;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import models.Appointment;
+import models.DB;
 import models.Duration;
 
+/**
+ * Single appointment (subclass of Appointment)
+ * 
+ * @author Jaïr Zijp
+ */
 public class SingleAppointment extends Appointment implements Duration {
     
     private String location;
-    private Date endDate;
-    private Time endTime;
+    private String endDate;
+    private String endTime;
     private String description;
-    private Date startDate;
-    private Time startTime;
+    private String startDate;
+    private String startTime;
 
-    public SingleAppointment(String location, Date endDate, Time endTime, String description) {
+    /**
+     *
+     * @param location
+     * @param endDate
+     * @param endTime
+     * @param description
+     * @param startDate
+     * @param startTime
+     * @param name
+     * @param date
+     * @param time
+     */
+    public SingleAppointment(String location, String endDate, String endTime, String description, String startDate, String startTime, String name, String date, String time) {
+        super(name, date, time);
         this.location = location;
         this.endDate = endDate;
         this.endTime = endTime;
         this.description = description;
+        this.startDate = startDate;
+        this.startTime = startTime;
     }
 
+    public void hasDuration() {
+        // do something
+    }
+
+    public void getAppointments() {
+        
+    }
+    
+    /**
+     *
+     * @throws SQLException
+     * @throws ParseException
+     */
+    public void addSingleAppointment() throws SQLException, ParseException {
+        
+         //create connection and execute query
+        DB Connection = new DB();
+
+        // get current user id
+        int userId = Main.getCurrentUser();
+        
+        DateFormat formatter = new SimpleDateFormat("HH:mm");
+        Time startTimeType = new Time(formatter.parse(startTime).getTime());
+        Time endTimeType = new Time(formatter.parse(endTime).getTime());
+             
+        String query = String.format(
+                                          "INSERT INTO appointment(user_id, name, date, time) VALUES('%s', '%s', '%s', '%s'); " 
+                                        + "SET @id_val = (SELECT LAST_INSERT_ID()); "
+                                        + "INSERT INTO single_appointment(appointment_id, location, end_date, end_time, description, start_date, start_time) "
+                                        + "VALUES(@id_val, '%s', '%s', '%s', '%s', '%s', '%s') "    
+                                    , userId, name, date, startTimeType, location, endDate, endTimeType, description, startDate, startTimeType);
+
+        //execute query and close connection
+        Connection.executeUpdateQuery(query);
+        Connection.close();
+        
+    }
+    
     public String getLocation() {
         return location;
     }
@@ -29,19 +92,19 @@ public class SingleAppointment extends Appointment implements Duration {
         this.location = location;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
-    public Time getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

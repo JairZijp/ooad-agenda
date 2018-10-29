@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import java.net.URL;
@@ -23,10 +18,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import models.DB;
+import java.io.IOException;
 
 /**
- *
- * @author Simon
+ *  Home Controller
+ * 
+ * @author Simon Wiering
  */
 public class Home implements Initializable {
     
@@ -135,5 +132,9 @@ public class Home implements Initializable {
             days.add(currentDay);
         }
         return days;
+    }
+    @FXML
+    private void NewAppointmentScreen() throws IOException {
+        Main.GoToScreen("NewAppointment.fxml");
     }
 }

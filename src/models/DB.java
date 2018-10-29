@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.sql.*;
 import java.util.Enumeration;
 
 /**
- *
- * @author Jaïr Zijp
+ * Database class
+ * 
+ * Class used to make connection and requests to SQL Database using JDBC
+ * 
+ * @author Simon Wiering
  */
 public class DB {
 
@@ -21,7 +19,7 @@ public class DB {
 
     private final static String DB_DRIVER_URL = "com.mysql.jdbc.Driver";
     private final static String DB_DRIVER_PREFIX = "jdbc:mysql://";
-    private final static String DB_DRIVER_PARAMETERS = "?useSSL=true";
+    private final static String DB_DRIVER_PARAMETERS = "?useSSL=true&allowMultiQueries=true";
 
 
     private Connection connection = null;
@@ -37,14 +35,31 @@ public class DB {
         this(DB_DEFAULT_DATABASE, DB_DEFAULT_SERVER_URL, DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
     }
 
+    /**
+     *
+     * @param dbName
+     */
     public DB(String dbName) {
         this(dbName, DB_DEFAULT_SERVER_URL, DB_DEFAULT_ACCOUNT, DB_DEFAULT_PASSWORD);
     }
 
+    /**
+     *
+     * @param dbName
+     * @param account
+     * @param password
+     */
     public DB(String dbName, String account, String password) {
         this(dbName, DB_DEFAULT_SERVER_URL, account, password);
     }
 
+    /**
+     *
+     * @param dbName
+     * @param serverURL
+     * @param account
+     * @param password
+     */
     public DB(String dbName, String serverURL, String account, String password) {
         try {
             // verify that a proper JDBC driver has been installed and linked
