@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.sql.Date;
@@ -11,11 +6,11 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 
 /**
- *
- * @author jairz
+ * Reminder appointment (subclass of Appointment)
+ * 
+ * @author Jaïr Zijp
  */
 public class Reminder extends Appointment {
     
@@ -43,6 +38,7 @@ public class Reminder extends Appointment {
     /**
      *
      * @throws SQLException
+     * @throws java.text.ParseException
      */
     public void addReminder() throws SQLException, ParseException {
         
