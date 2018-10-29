@@ -81,7 +81,9 @@ public class RecurringAppointment extends Appointment implements Recurring {
     }
 
     public void isRecurring() {
-        // do something
+        
+        
+        
     }
 
     public String getLocation() {

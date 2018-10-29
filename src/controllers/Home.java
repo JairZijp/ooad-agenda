@@ -122,7 +122,7 @@ public class Home implements Initializable {
         int year = calendar.get(Calendar.YEAR);
         // get appointments in this year/month combination
         String query = String.format(
-                "SELECT * FROM appointment WHERE date LIKE '%s-%s-%%' AND userId = %s",
+                "SELECT * FROM appointment WHERE date LIKE '%s-%s-%%' AND user_id = %s",
                 year, month, getCurrentUser());
         System.out.println(query);
         
