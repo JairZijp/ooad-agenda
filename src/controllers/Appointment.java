@@ -8,6 +8,10 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -72,9 +76,10 @@ public class Appointment implements Initializable {
      *
      * @param event
      * @throws SQLException
+     * @throws java.text.ParseException
      */
     @FXML
-    public void addSingleAppointment(ActionEvent event) throws SQLException {
+    public void addSingleAppointment(ActionEvent event) throws SQLException, ParseException {
         
         String name = nameField.textProperty().get(),
                 description = descriptionField.textProperty().get(),
@@ -83,10 +88,11 @@ public class Appointment implements Initializable {
                 startTime = startTimeField.textProperty().get(),
                 location = locationField.textProperty().get();
         
-        String startDate = startDateField.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
-                endDate = endDateField.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        String startDate = startDateField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                endDate = endDateField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         
-        SingleAppointment a = new SingleAppointment(location, endDate, endTime, description, startDate, name, endDate, time);
+       
+        SingleAppointment a = new SingleAppointment(location, endDate, endTime, description, startDate, startTime, name, startDate, time);
         
         a.addSingleAppointment();
     
@@ -97,11 +103,11 @@ public class Appointment implements Initializable {
      * @param event
      * @throws SQLException
      */
-    public void addReminder(ActionEvent event) throws SQLException {
+    public void addReminder(ActionEvent event) throws SQLException, ParseException {
       
         String name = nameField.textProperty().get(),
             time = startTimeField.textProperty().get(),
-            date = startDateField.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+            date = startDateField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
             category = categoryField.textProperty().get();
         
         int minutesBefore = Integer.parseInt(reminderMinutesBefore.textProperty().get());
@@ -112,7 +118,7 @@ public class Appointment implements Initializable {
         
     }
     
-    public void addRecurringAppointment(ActionEvent event) throws SQLException {
+    public void addRecurringAppointment(ActionEvent event) throws SQLException, ParseException {
       
         String name = nameField.textProperty().get(),
                 description = descriptionField.textProperty().get(),
@@ -123,8 +129,8 @@ public class Appointment implements Initializable {
         int timesTotal = Integer.parseInt(timesTotalField.textProperty().get()),
                 frequency =  Integer.parseInt(frequencyField.textProperty().get());
         
-        String startDate = startDateField.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
-                endDate = endDateField.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        String startDate = startDateField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                endDate = endDateField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         
         RecurringAppointment r = new RecurringAppointment(location, description, 
                 endDate, endTime, startDate, time, frequency, timesTotal, name, startDate, time);
