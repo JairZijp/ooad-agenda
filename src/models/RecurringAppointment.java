@@ -71,7 +71,7 @@ public class RecurringAppointment extends Appointment implements Recurring {
                 "INSERT INTO recurring_appointment(appointment_id, description, end_date, end_time, start_date, start_time, frequency, times_total) " +
                 "VALUES(@id_val, '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
                 
-        , name, date, time, description, endDate, endTime, startDate, startTime, frequency, timesTotal);
+        , name, date, time, description, endDate, endTimeType, startDate, startTimeType, frequency, timesTotal);
         
         //execute query and close connection
         Connection.executeUpdateQuery(query);
