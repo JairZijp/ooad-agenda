@@ -1,8 +1,14 @@
 package models;
 
+import static controllers.Main.getCurrentUser;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Appointment class
@@ -35,6 +41,19 @@ public abstract class Appointment {
         Connection.executeUpdateQuery(sql);
         Connection.close();
         
+    }
+    
+    
+    public ResultSet getAppointments() throws SQLException {
+ 
+        DB connection = new DB();
+        
+        String query = String.format("SELECT * FROM appointment");
+        System.out.println(query);
+        
+        ResultSet list = connection.executeResultSetQuery(query);;
+        
+        return list;    
     }
     
     /* getter and setters */
