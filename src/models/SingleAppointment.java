@@ -1,5 +1,6 @@
 package models;
 
+import controllers.Main;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.text.DateFormat;
@@ -62,17 +63,20 @@ public class SingleAppointment extends Appointment implements Duration {
         
          //create connection and execute query
         DB Connection = new DB();
+
+        // get current user id
+        int userId = Main.getCurrentUser();
         
         DateFormat formatter = new SimpleDateFormat("HH:mm");
         Time startTimeType = new Time(formatter.parse(startTime).getTime());
         Time endTimeType = new Time(formatter.parse(endTime).getTime());
              
         String query = String.format(
-                                          "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); " 
+                                          "INSERT INTO appointment(user_id, name, date, time) VALUES('%s', '%s', '%s', '%s'); " 
                                         + "SET @id_val = (SELECT LAST_INSERT_ID()); "
                                         + "INSERT INTO single_appointment(appointment_id, location, end_date, end_time, description, start_date, start_time) "
                                         + "VALUES(@id_val, '%s', '%s', '%s', '%s', '%s', '%s') "    
-                                    , name, date, startTimeType, location, endDate, endTimeType, description, startDate, startTimeType);
+                                    , userId, name, date, startTimeType, location, endDate, endTimeType, description, startDate, startTimeType);
 
         //execute query and close connection
         Connection.executeUpdateQuery(query);

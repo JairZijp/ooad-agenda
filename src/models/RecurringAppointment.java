@@ -1,5 +1,6 @@
 package models;
 
+import controllers.Main;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.text.DateFormat;
@@ -61,13 +62,16 @@ public class RecurringAppointment extends Appointment implements Recurring {
         Time startTimeType = new Time(formatter.parse(startTime).getTime());
         Time endTimeType = new Time(formatter.parse(endTime).getTime());
         
+        // get current user id
+        int userId = Main.getCurrentUser();
+        
         String query = String.format(
-                "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); " +
+                "INSERT INTO appointment(user_id, name, date, time) VALUES('%s', %s', '%s', '%s'); " +
                 "SET @id_val = (SELECT LAST_INSERT_ID()); " +
                 "INSERT INTO recurring_appointment(appointment_id, description, end_date, end_time, start_date, start_time, frequency, times_total) " +
                 "VALUES(@id_val, '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
                 
-        , name, date, time, description, endDate, endTimeType, startDate, startTimeType, frequency, timesTotal);
+        , userId, name, date, time, description, endDate, endTimeType, startDate, startTimeType, frequency, timesTotal);
         
         //execute query and close connection
         Connection.executeUpdateQuery(query);

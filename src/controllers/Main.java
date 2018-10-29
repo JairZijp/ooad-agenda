@@ -18,6 +18,7 @@ public class Main extends Application {
     private static Scene theScene;
     private static int StageWidth = 1000;
     private static int StageHeight = 600;
+    private static int currentUserId;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -49,6 +50,15 @@ public class Main extends Application {
         thePrimaryStage.setTitle("OOAD");
         thePrimaryStage.setScene(newScene);
         thePrimaryStage.show();
+    }
+
+    
+    public static void setCurrentUser(int userId) {
+        currentUserId = userId;
+    }
+
+    public static int getCurrentUser() {
+        return currentUserId;
     }
 
 

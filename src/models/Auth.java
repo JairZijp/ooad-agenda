@@ -1,5 +1,6 @@
 package models;
 
+import controllers.Main;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.sql.ResultSet;
@@ -47,6 +48,7 @@ public class Auth extends Authenticator {
           
             //set properties of current User
             user.setUsername(queryResult.getString("username"));
+            Main.setCurrentUser(queryResult.getInt("id"));
 
             return true;
         } else {
