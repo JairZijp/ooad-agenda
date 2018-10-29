@@ -1,11 +1,15 @@
 package models;
 
 import controllers.Main;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import models.Appointment;
 import models.DB;
 import models.Duration;
@@ -44,16 +48,13 @@ public class SingleAppointment extends Appointment implements Duration {
         this.description = description;
         this.startDate = startDate;
         this.startTime = startTime;
-    }
+    }    
 
     public void hasDuration() {
         // do something
     }
-
-    public void getAppointments() {
-        
-    }
     
+   
     /**
      *
      * @throws SQLException
@@ -114,6 +115,30 @@ public class SingleAppointment extends Appointment implements Duration {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     
