@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import javafx.event.ActionEvent;
@@ -19,6 +14,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import models.Auth;
 
+/**
+ * Login controller
+ * 
+ * @author Simon Wiering
+ */
 public class Login {
 
     @FXML
@@ -26,13 +26,14 @@ public class Login {
     @FXML
     private PasswordField PasswordField;
 
+    // Function to change to navigate to another FXML    
     @FXML
     private void NextScreen(ActionEvent event) throws IOException, SQLException, NoSuchAlgorithmException {       
 
         // set username and password from textfields
         String username = UsernameField.textProperty().get(),
                 password = PasswordField.textProperty().get(),
-                hashedPassword = User.HashPassword(password);
+                hashedPassword = User.hashPassword(password);
 
         
         Auth auth = Auth.getInstance();

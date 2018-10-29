@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controllers;
 
 import java.io.IOException;
@@ -24,9 +19,9 @@ import models.Reminder;
 import models.SingleAppointment;
 
 /**
- * FXML Controller class
+ * Appointment Controlelr
  *
- * @author jairz
+ * @author Jaïr Zijp
  */
 public class Appointment implements Initializable {
 
@@ -68,9 +63,7 @@ public class Appointment implements Initializable {
         // TODO
     }
 
-    public Appointment() {
-        
-    }
+    public Appointment() {}
     
     /**
      *
@@ -118,6 +111,12 @@ public class Appointment implements Initializable {
         
     }
     
+    /**
+     *
+     * @param event
+     * @throws SQLException
+     * @throws ParseException
+     */
     public void addRecurringAppointment(ActionEvent event) throws SQLException, ParseException {
       
         String name = nameField.textProperty().get(),

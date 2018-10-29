@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.net.Authenticator;
@@ -12,8 +7,12 @@ import java.sql.SQLException;
 
 
 /**
- *
- * @author jairz
+ * Auth class
+ * 
+ * Class to make check if the user that tries the login has a valid account.
+ * Used singleton design pattern to only make one instance of this class/.
+ * 
+ * @author Jaïr Zijp
  */
 public class Auth extends Authenticator {
     

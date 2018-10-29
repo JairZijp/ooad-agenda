@@ -9,6 +9,11 @@ import models.Appointment;
 import models.DB;
 import models.Duration;
 
+/**
+ * Single appointment (subclass of Appointment)
+ * 
+ * @author Jaïr Zijp
+ */
 public class SingleAppointment extends Appointment implements Duration {
     
     private String location;
@@ -18,6 +23,18 @@ public class SingleAppointment extends Appointment implements Duration {
     private String startDate;
     private String startTime;
 
+    /**
+     *
+     * @param location
+     * @param endDate
+     * @param endTime
+     * @param description
+     * @param startDate
+     * @param startTime
+     * @param name
+     * @param date
+     * @param time
+     */
     public SingleAppointment(String location, String endDate, String endTime, String description, String startDate, String startTime, String name, String date, String time) {
         super(name, date, time);
         this.location = location;
@@ -36,6 +53,11 @@ public class SingleAppointment extends Appointment implements Duration {
         
     }
     
+    /**
+     *
+     * @throws SQLException
+     * @throws ParseException
+     */
     public void addSingleAppointment() throws SQLException, ParseException {
         
          //create connection and execute query
