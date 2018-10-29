@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -27,6 +28,7 @@
                 <Font size="17.0" />
             </font>
         </Text>
-        <Button fx:id="submitBtn" layoutX="198.0" layoutY="349.0" mnemonicParsing="false" onAction="#addSingleAppointment" text="Submit" />  
+        <Button fx:id="submitBtn" layoutX="198.0" layoutY="349.0" mnemonicParsing="false" onAction="#addSingleAppointment" text="Submit" />
+      <Spinner layoutX="39.0" layoutY="119.0" />  
   </children>
 </AnchorPane>
