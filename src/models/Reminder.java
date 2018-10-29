@@ -1,5 +1,6 @@
 package models;
 
+import controllers.Main;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -47,13 +48,16 @@ public class Reminder extends Appointment {
         DateFormat formatter = new SimpleDateFormat("HH:mm");
         Time timeType = new Time(formatter.parse(time).getTime());
         
+         // get current user id
+        int userId = Main.getCurrentUser();
+        
         String query = String.format(
-                "INSERT INTO appointment(name, date, time) VALUES('%s', '%s', '%s'); " +
+                "INSERT INTO appointment(user_id, name, date, time) VALUES('%s', %s', '%s', '%s'); " +
                 "SET @id_val = (SELECT LAST_INSERT_ID()); " +
                 "INSERT INTO reminder(appointment_id, reminder_minutes_before, category) " +
                 "VALUES(@id_val, '%s', '%s')"
                 
-        , name, date, timeType, reminderMinutesBefore, category);
+        , userId, name, date, timeType, reminderMinutesBefore, category);
         
         //execute query and close connection
         Connection.executeUpdateQuery(query);
